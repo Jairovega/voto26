@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Votación Educativo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="pantalla-login" class="container">
+        <h1>Bienvenido</h1>
+        <p class="subtitulo">Simulación Educativa 2026</p>
+        <input type="text" id="nombre" placeholder="Nombre Completo" required>
+        <input type="text" id="cedula" placeholder="Número de Cédula" required>
+        <button id="btn-login" onclick="validarIngreso()">Siguiente</button>
+    </div>
+
+    <div id="pantalla-voto" class="container hidden">
+        <h2 id="saludo-usuario"></h2>
+        <p>Seleccione su candidato:</p>
+        <div id="lista-candidatos"></div>
+    </div>
+
+    <div id="pantalla-resultados" class="container hidden">
+        <div class="mensaje-gracias">¡Gracias por su voto!</div>
+        <p style="color: #34495e; font-weight: bold; margin-bottom: 15px;">Resultados Actuales:</p>
+        <div id="lista-resultados" style="text-align: left; margin-bottom: 20px;"></div>
+        <button onclick="location.reload()">FINALIZAR</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "nombre": "Elena Naranjo",
+        "partido": "Partido Naranja",
+        "votos": 0,
+        "color": "#e67e22"
+    },
+    {
+        "id": 2,
+        "nombre": "Marco Azulejo",
+        "partido": "Partido Azul",
+        "votos": 0,
+        "color": "#2980b9"
+    },
+    {
+        "id": 3,
+        "nombre": "Rosa Rojo",
+        "partido": "Partido Rojo",
+        "votos": 0,
+        "color": "#e74c3c"
+    },
+    {
+        "id": 4,
+        "nombre": "Verde García",
+        "partido": "Partido Verde",
+        "votos": 0,
+        "color": "#27ae60"
+    }
+]
