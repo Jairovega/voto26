@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T3Q29J47N6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T3Q29J47N6');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Votación Educativo</title>
@@ -28,6 +37,10 @@
         <div id="lista-resultados" style="text-align: left; margin-bottom: 20px;"></div>
         <button onclick="location.reload()">FINALIZAR</button>
     </div>
+
+    <footer style="margin-top: 20px; font-size: 0.8em; color: #7f8c8d; text-align: center;">
+        <p>Este sitio utiliza Google Analytics para fines estadísticos educativos.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
