@@ -9,13 +9,19 @@
       gtag('config', 'G-7ZNRL6KZM5');
     </script>
 
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MQJTJJ3Q');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Votación Educativo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQJTJJ3Q"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="pantalla-login" class="container">
         <h1>Bienvenido</h1>
         <p class="subtitulo">Simulación Educativa 2026</p>
@@ -32,14 +38,11 @@
 
     <div id="pantalla-resultados" class="container hidden">
         <div class="mensaje-gracias">¡Gracias por su voto!</div>
+        <p id="ya-voto-msg" style="color: red; display: none;">Usted ya ha registrado un voto anteriormente.</p>
         <p style="color: #34495e; font-weight: bold; margin-bottom: 15px;">Resultados Actuales:</p>
         <div id="lista-resultados" style="text-align: left; margin-bottom: 20px;"></div>
-        <button class="btn-finalizar" onclick="location.reload()">FINALIZAR</button>
+        <button class="btn-finalizar" onclick="location.reload()">REINICIAR</button>
     </div>
-
-    <footer>
-        <p>Este sitio utiliza Google Analytics para fines estadísticos educativos.</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>
