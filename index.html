@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZNRL6KZM5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7ZNRL6KZM5');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZNRL6KZM5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7ZNRL6KZM5');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,17 +27,21 @@
     <div id="pantalla-voto" class="container hidden">
         <h2 id="saludo-usuario"></h2>
         <p>Seleccione su candidato:</p>
-        <div id="lista-candidatos"></div>
+        <div id="lista-candidatos">
+            <button class="btn-voto" onclick="registrarVoto('Candidato A')">Candidato A</button>
+            <button class="btn-voto" onclick="registrarVoto('Candidato B')">Candidato B</button>
+            <button class="btn-voto" onclick="registrarVoto('Voto en Blanco')">Voto en Blanco</button>
+        </div>
     </div>
 
     <div id="pantalla-resultados" class="container hidden">
         <div class="mensaje-gracias">¡Gracias por su voto!</div>
         <p style="color: #34495e; font-weight: bold; margin-bottom: 15px;">Resultados Actuales:</p>
         <div id="lista-resultados" style="text-align: left; margin-bottom: 20px;"></div>
-        <button onclick="location.reload()">FINALIZAR</button>
+        <button class="btn-finalizar" onclick="location.reload()">FINALIZAR</button>
     </div>
 
-    <footer style="margin-top: 20px; font-size: 0.8em; color: #7f8c8d; text-align: center;">
+    <footer>
         <p>Este sitio utiliza Google Analytics para fines estadísticos educativos.</p>
     </footer>
 
