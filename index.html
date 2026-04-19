@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Votación Educativo</title>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZNRL6KZM5"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,15 +18,112 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MQJTJJ3Q');</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Votación Educativo</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reset general */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Aquí se agrega la imagen de fondo */
+            background-color: #eef2f3;
+            background-image: url('web.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            /* Fondo ligeramente transparente para que se vea el fondo pero se pueda leer */
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Estilo para la nueva imagen/logo */
+        .logo-votacion {
+            width: 100%;
+            max-width: 120px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 { color: #2c3e50; margin-bottom: 5px; }
+        .subtitulo { color: #7f8c8d; margin-bottom: 25px; font-size: 0.9em; }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #dcdde1;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #3498db;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-voto {
+            background-color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.75em;
+            color: #95a5a6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQJTJJ3Q"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="pantalla-login" class="container">
+        <img src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=300&q=80" alt="Logo Simulación" class="logo-votacion">
+        
         <h1>Bienvenido</h1>
         <p class="subtitulo">Simulación Educativa 2026</p>
         <input type="text" id="nombre" placeholder="Nombre Completo" required>
@@ -37,13 +138,99 @@
     </div>
 
     <div id="pantalla-resultados" class="container hidden">
-        <div class="mensaje-gracias">¡Gracias por su voto!</div>
-        <p id="ya-voto-msg" style="color: red; display: none;">Usted ya ha registrado un voto anteriormente.</p>
-        <p style="color: #34495e; font-weight: bold; margin-bottom: 15px;">Resultados Actuales:</p>
+        <h2 style="color: #27ae60;">¡Voto Registrado!</h2>
+        <div class="mensaje-gracias">¡Gracias por su participación!</div>
+        <p id="ya-voto-msg" style="color: #e74c3c; display: none; font-weight: bold;">Usted ya ha registrado un voto anteriormente.</p>
+        <p style="color: #34495e; font-weight: bold; margin-bottom: 15px; margin-top: 20px;">Resultados Actuales:</p>
         <div id="lista-resultados" style="text-align: left; margin-bottom: 20px;"></div>
-        <button class="btn-finalizar" onclick="location.reload()">REINICIAR</button>
-    </div>
+        </div>
 
-    <script src="script.js"></script>
+    <script>
+        const candidatos = [
+            { "id": 1, "nombre": "Elena Naranjo", "partido": "Partido Naranja", "votos": 0, "color": "#e67e22" },
+            { "id": 2, "nombre": "Marco Azulejo", "partido": "Partido Azul", "votos": 0, "color": "#2980b9" },
+            { "id": 3, "nombre": "Rosa Rojo", "partido": "Partido Rojo", "votos": 0, "color": "#e74c3c" },
+            { "id": 4, "nombre": "Verde García", "partido": "Partido Verde", "votos": 0, "color": "#27ae60" }
+        ];
+
+        // Al cargar la página, verificar si ya votó
+        window.onload = function() {
+            if (localStorage.getItem('yaVoto') === 'true') {
+                document.getElementById('pantalla-login').classList.add('hidden');
+                document.getElementById('pantalla-resultados').classList.remove('hidden');
+                document.getElementById('ya-voto-msg').style.display = 'block';
+                mostrarResultados();
+            }
+        };
+
+        function validarIngreso() {
+            const nombre = document.getElementById('nombre').value.trim();
+            const cedula = document.getElementById('cedula').value.trim();
+
+            if (localStorage.getItem('yaVoto') === 'true') {
+                alert("Esta cédula o dispositivo ya registró un voto.");
+                return;
+            }
+
+            if (nombre && cedula) {
+                document.getElementById('pantalla-login').classList.add('hidden');
+                document.getElementById('pantalla-voto').classList.remove('hidden');
+                document.getElementById('saludo-usuario').innerText = `Hola, ${nombre}`;
+                renderizarCandidatos();
+            } else {
+                alert("Por favor, complete sus datos.");
+            }
+        }
+
+        function renderizarCandidatos() {
+            const contenedor = document.getElementById('lista-candidatos');
+            contenedor.innerHTML = "";
+            candidatos.forEach(c => {
+                const btn = document.createElement('button');
+                btn.className = 'btn-voto';
+                btn.style.backgroundColor = c.color;
+                btn.style.color = 'white';
+                btn.innerText = `${c.nombre}`;
+                btn.onclick = () => registrarVoto(c.id);
+                contenedor.appendChild(btn);
+            });
+        }
+
+        function registrarVoto(id) {
+            // 1. Evitar múltiples clics
+            if (localStorage.getItem('yaVoto') === 'true') return;
+
+            // 2. Marcar como votado en el navegador
+            localStorage.setItem('yaVoto', 'true');
+            
+            // 3. Registrar en la lógica (simulado)
+            if (id !== null) {
+                const candidato = candidatos.find(c => c.id === id);
+                if(candidato) candidato.votos++;
+            }
+
+            // 4. Enviar evento a GTM/Analytics
+            window.dataLayer.push({
+                'event': 'voto_realizado',
+                'candidato': id
+            });
+
+            mostrarResultados();
+        }
+
+        function mostrarResultados() {
+            document.getElementById('pantalla-voto').classList.add('hidden');
+            document.getElementById('pantalla-resultados').classList.remove('hidden');
+            const lista = document.getElementById('lista-resultados');
+            lista.innerHTML = "";
+            candidatos.forEach(c => {
+                const p = document.createElement('p');
+                p.style.margin = "8px 0";
+                p.style.fontSize = "16px";
+                p.innerHTML = `<strong>${c.nombre}:</strong> ${c.votos} votos`;
+                lista.appendChild(p);
+            });
+        }
+    </script>
 </body>
 </html>
