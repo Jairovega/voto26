@@ -28,7 +28,6 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Aquí se agrega la imagen de fondo */
             background-color: #eef2f3;
             background-image: url('web.jpg'); 
             background-size: cover;
@@ -43,7 +42,6 @@
         }
 
         .container {
-            /* Fondo ligeramente transparente para que se vea el fondo pero se pueda leer */
             background: rgba(255, 255, 255, 0.95);
             padding: 40px;
             border-radius: 15px;
@@ -54,7 +52,6 @@
             animation: fadeIn 0.5s ease-in-out;
         }
 
-        /* Estilo para la nueva imagen/logo */
         .logo-votacion {
             width: 100%;
             max-width: 120px;
@@ -139,11 +136,9 @@
 
     <div id="pantalla-resultados" class="container hidden">
         <h2 style="color: #27ae60;">¡Voto Registrado!</h2>
-        <div class="mensaje-gracias">¡Gracias por su participación!</div>
+        <div class="mensaje-gracias" style="margin-bottom: 20px; font-size: 1.1em;">¡Gracias por su participación!</div>
         <p id="ya-voto-msg" style="color: #e74c3c; display: none; font-weight: bold;">Usted ya ha registrado un voto anteriormente.</p>
-        <p style="color: #34495e; font-weight: bold; margin-bottom: 15px; margin-top: 20px;">Resultados Actuales:</p>
-        <div id="lista-resultados" style="text-align: left; margin-bottom: 20px;"></div>
-        </div>
+    </div>
 
     <script>
         const candidatos = [
@@ -221,15 +216,6 @@
         function mostrarResultados() {
             document.getElementById('pantalla-voto').classList.add('hidden');
             document.getElementById('pantalla-resultados').classList.remove('hidden');
-            const lista = document.getElementById('lista-resultados');
-            lista.innerHTML = "";
-            candidatos.forEach(c => {
-                const p = document.createElement('p');
-                p.style.margin = "8px 0";
-                p.style.fontSize = "16px";
-                p.innerHTML = `<strong>${c.nombre}:</strong> ${c.votos} votos`;
-                lista.appendChild(p);
-            });
         }
     </script>
 </body>
